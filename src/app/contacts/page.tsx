@@ -1,12 +1,8 @@
-// "use client";
-import GalleryTabs from "components/components/GalleryTabs";
-import { fetchData } from "components/lib/fetchData";
 import Image from "next/image";
 import Link from "next/link";
-import bgImage from "../../public/photography-bg.jpg";
+import bgImage from "../../../public/photography-bg.jpg";
 
-export default async function Home() {
-  const galleryData = await fetchData();
+export default function Contacts() {
   return (
     <div className="relative flex min-h-screen flex-col text-white bg-sky-950">
       <Image
@@ -22,7 +18,7 @@ export default async function Home() {
       <header className="fixed w-screen top-0 z-10 flex justify-between items-center py-3 px-6 h-24">
         <span className="uppercase">Photography Portfolio</span>
         <Link
-          href="/contacts"
+          href="/"
           className="rounded-3xl bg-white text-stone-700 px-5 py-2 hover:bg-opacity-90"
         >
           Get in touch
@@ -30,12 +26,8 @@ export default async function Home() {
       </header>
 
       <main className="relative z-5 mx-auto max-w-5xl mt-24">
-        <GalleryTabs {...galleryData} />
+        Its to simple site for this C:
       </main>
-
-      <footer className="relative z-20 mt-auto flex justify-center items-center py-3 px-6 h-24">
-        Photography Portfolio
-      </footer>
     </div>
   );
 }
