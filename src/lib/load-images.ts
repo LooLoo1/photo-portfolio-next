@@ -6,6 +6,12 @@ export async function loadImages(q: string) {
       headers: {
         Authorization: `Client-ID ${unsplashAccessKey}`,
       },
+
+      // cache: "force-cache", ///< SSG
+      // cache: "no-store", ///< SSR
+      // next:{
+      //   revalidate: 20, ///< ISR
+      // }
     }
   );
   const data = await res.json();
