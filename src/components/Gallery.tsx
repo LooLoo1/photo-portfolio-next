@@ -2,7 +2,7 @@
 import { LightGallery } from "lightgallery/lightgallery";
 import LightGalleryComponent from "lightgallery/react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Masonry from "react-masonry-css";
 import type { Photo } from "../types";
 
@@ -22,9 +22,28 @@ type GalleryProps = {
 export function Gallery({ photos }: GalleryProps) {
   const lightboxRef = useRef<LightGallery | null>(null);
 
+  const [screenSize, setScreenSize] = useState(Math.ceil(window.innerWidth / 480));
+
+  const handleResize = () => {
+    const width = window.innerWidth;
+    setScreenSize(Math.ceil(width / 480));
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
-      <Masonry breakpointCols={2} className="flex gap-4" columnClassName="">
+      <Masonry
+        breakpointCols={screenSize}
+        className="flex gap-4"
+        columnClassName=""
+      >
         {photos.map((photo, idx) => (
           <div className="relative" key={photo.src}>
             <Image
@@ -33,7 +52,6 @@ export function Gallery({ photos }: GalleryProps) {
               height={photo.height}
               alt={photo.alt}
               className="relative my-4 bg-stone-900"
-
             />
             <div
               className="absolute w-full h-full inset-0 bg-transparent hover:bg-stone-900 hover:bg-opacity-10 cursor-pointer"
