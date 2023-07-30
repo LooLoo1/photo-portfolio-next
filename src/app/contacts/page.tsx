@@ -15,7 +15,7 @@ export default function Contacts() {
 
       <div className="fixed left-0 top-0 w-full h-full z-5 from-stone-900 bg-gradient-to-t"></div>
 
-      <header className="fixed w-screen top-0 z-10 flex justify-between items-center py-3 px-6 h-24">
+      <header className="fixed w-screen top-0 z-10 flex justify-between items-center py-3 px-6 h-24 sm:flex-row flex-col">
         <span className="uppercase">Photography Portfolio</span>
         <Link
           href="/"

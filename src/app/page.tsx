@@ -8,7 +8,7 @@ import bgImage from "../../public/photography-bg.jpg";
 export default async function Home() {
   const galleryData = await fetchData();
   return (
-    <div className="relative flex min-h-screen flex-col text-white bg-sky-950">
+    <div className="relative flex min-h-screen flex-col text-white bg-sky-950 lg:p-0 p-5">
       <Image
         priority
         className="fixed object-cover bg-center left-0 top-0 h-screen z-0"
@@ -19,7 +19,8 @@ export default async function Home() {
 
       <div className="fixed left-0 top-0 w-full h-full z-5 from-stone-900 bg-gradient-to-t"></div>
 
-      <header className="fixed w-screen top-0 z-10 flex justify-between items-center py-3 px-6 h-24">
+      <header className="fixed w-screen top-0 z-10 flex justify-between items-center py-3 px-6 h-24
+      sm:flex-row flex-col">
         <span className="uppercase">Photography Portfolio</span>
         <Link
           href="/contacts"
